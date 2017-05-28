@@ -35,15 +35,11 @@
             <a class="navbar-brand" href="#">Zašportuj.sk</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-left">
                 <li><a href="#">Tabuľky</a></li>
                 <li><a href="#">Kontakt</a></li>
                 <li><a href="#">O nás</a></li>
             </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Hľadať...">
-            </form>
         </div>
     </div>
 </nav>
-
