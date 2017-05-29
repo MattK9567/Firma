@@ -18,4 +18,12 @@ class Status_rezervacie extends CI_Controller
         $this->load->view('status_rezervacie/index', $data);
         $this->load->view('template/footer');
     }
+
+    public function delete()
+    {
+        $id = $this->uri->segment(3);
+
+        $this->Status_rezervacie_model->delete_status_rezervacie($id);
+        redirect(base_url() . 'index.php/status_rezervacie');
+    }
 }

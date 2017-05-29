@@ -25,9 +25,9 @@
                     <td><?php echo $rezervacie_item['cena']; ?></td>
                     <td><?php echo $rezervacie_item['cas']; ?></td>
                     <td>
-                        <a class="btn btn-info btn-xs" href="<?php echo site_url('rezervacie/view'.$rezervacie_item['ID']); ?>">View</a>
-                        <a class="btn btn-success btn-xs" href="<?php echo site_url('rezervacie/edit'.$rezervacie_item['ID']); ?>">Edit</a>
-                        <a class="btn btn-warning btn-xs" href="<?php echo site_url('rezervacie/delete'.$rezervacie_item['ID']); ?>">Delete</a>
+                        <a class="btn btn-info btn-xs" href="<?php echo base_url()."index.php/Rezervacia/view/".$rezervacie_item['ID']; ?>">View</a>
+                        <a class="btn btn-success btn-xs" href="<?php echo base_url()."index.php/Rezervacia/edit/".$rezervacie_item['ID']; ?>">Edit</a>
+                        <a class="btn btn-warning btn-xs" href="<?php echo base_url()."index.php/Rezervacia/delete/".$rezervacie_item['ID']; ?>" onclick="confirm('Naozaj zmazať rezerváciu??')">Delete</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

@@ -18,4 +18,13 @@ class Rezervacia extends CI_Controller
         $this->load->view('rezervacia/index', $data);
         $this->load->view('template/footer');
     }
+
+
+    public function delete()
+    {
+        $id = $this->uri->segment(3);
+
+        $this->Rezervacia_model->delete_rezervacie($id);
+        redirect(base_url() . 'index.php/rezervacia');
+    }
 }

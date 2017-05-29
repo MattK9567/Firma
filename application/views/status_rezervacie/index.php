@@ -21,9 +21,7 @@
                     <td><?php echo $status_rezervacie_item['ID']; ?></td>
                     <td><?php echo $status_rezervacie_item['status']; ?></td>
                     <td>
-                        <a class="btn btn-info btn-xs" href="<?php echo site_url('status_rezervacie/view'.$status_rezervacie_item['ID']); ?>">View</a>
-                        <a class="btn btn-success btn-xs" href="<?php echo site_url('status_rezervacie/edit'.$status_rezervacie_item['ID']); ?>">Edit</a>
-                        <a class="btn btn-warning btn-xs" href="<?php echo site_url('status_rezervacie/delete'.$status_rezervacie_item['ID']); ?>">Delete</a>
+                        <a class="btn btn-warning btn-xs" href="<?php echo base_url()."index.php/Status_rezervacie/delete/".$status_rezervacie_item['ID']; ?>" onclick="confirm('Naozaj zmazať tento status rezervácie??')">Delete</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

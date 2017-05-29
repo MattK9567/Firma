@@ -18,4 +18,12 @@ class Sportoviska extends CI_Controller
         $this->load->view('sportoviska/index', $data);
         $this->load->view('template/footer');
     }
+
+    public function delete()
+    {
+        $id = $this->uri->segment(3);
+
+        $this->Sportoviska_model->delete_sportoviska($id);
+        redirect(base_url() . 'index.php/sportoviska');
+    }
 }

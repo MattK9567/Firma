@@ -21,9 +21,8 @@
                     <td><?php echo $typ_sportoviska_item['ID']; ?></td>
                     <td><?php echo $typ_sportoviska_item['nazov']; ?></td>
                     <td>
-                        <a class="btn btn-info btn-xs" href="<?php echo site_url('typ_sportoviska/view'.$typ_sportoviska_item['ID']); ?>">View</a>
-                        <a class="btn btn-success btn-xs" href="<?php echo site_url('typ_sportoviska/edit'.$typ_sportoviska_item['ID']); ?>">Edit</a>
-                        <a class="btn btn-warning btn-xs" href="<?php echo site_url('typ_sportoviska/delete'.$typ_sportoviska_item['ID']); ?>">Delete</a>
+                        <a class="btn btn-success btn-xs" href="<?php echo base_url()."index.php/Typ_sportoviska/edit/".$typ_sportoviska_item['ID']; ?>">Edit</a>
+                        <a class="btn btn-warning btn-xs" href="<?php echo base_url()."index.php/Typ_sportoviska/delete/".$typ_sportoviska_item['ID']; ?>" onclick="confirm('Naozaj zmazať tento typ športovisko??')">Delete</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

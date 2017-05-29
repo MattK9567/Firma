@@ -19,11 +19,6 @@ class Customers extends CI_Controller
         $this->load->view('template/footer');
     }
 
-    public function create()
-    {
-
-    }
-
     public function edit()
     {
 
@@ -48,6 +43,9 @@ class Customers extends CI_Controller
 
     public function delete()
     {
+        $id = $this->uri->segment(3);
 
+        $this->Customers_model->delete_customers($id);
+        redirect(base_url() . 'index.php/customers');
     }
 }
