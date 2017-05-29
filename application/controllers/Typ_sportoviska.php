@@ -19,6 +19,29 @@ class Typ_sportoviska extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function edit()
+    {
+        $id = $this->uri->segment(3);
+
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $data['zakaznici'] = $this->Typ_sportoviska_model->get_typ_sportoviska($id);
+
+        $this->form_validation->set_rules('nazov', 'Nazov', 'required');
+
+        if($this->form_validation->run() == FALSE)
+        {
+            $this->load->view('template/header', $data);
+            $this->load->view('typ_sportoviska/edit', $data);
+            $this->load->view('template/footer');
+        }
+        else {
+            $this->Typ_sportoviska_model->set_typ_sportoviska($id);
+            redirect(base_url().'index.php/typ_sportoviska');
+        }
+    }
+
     public function delete()
     {
         $id = $this->uri->segment(3);
