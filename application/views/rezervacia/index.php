@@ -15,7 +15,6 @@
             <th>Dátum</th>
             <th>Cena</th>
             <th>Čas</th>
-            <th>Akcie</th>
             </thead>
             <tbody>
             <?php foreach ($rezervacie as $rezervacie_item): ?>

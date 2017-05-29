@@ -16,7 +16,6 @@
                 <th>Priezvisko</th>
                 <th>Email</th>
                 <th>Názov firmy</th>
-                <th>Akcie</th>
             </thead>
             <tbody>
                 <?php foreach ($zakaznici as $customers_item): ?>

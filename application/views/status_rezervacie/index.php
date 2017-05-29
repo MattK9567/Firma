@@ -13,7 +13,6 @@
             <thead>
             <th>#</th>
             <th>status</th>
-            <th>Akcie</th>
             </thead>
             <tbody>
             <?php foreach ($status_rezervacie as $status_rezervacie_item): ?>

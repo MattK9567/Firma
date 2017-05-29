@@ -13,7 +13,6 @@
             <thead>
             <th>#</th>
             <th>Názov</th>
-            <th>Akcie</th>
             </thead>
             <tbody>
             <?php foreach ($typ_sportoviska as $typ_sportoviska_item): ?>
