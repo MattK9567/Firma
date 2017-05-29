@@ -7,7 +7,6 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
 
     <title>Dashboard Template for Bootstrap</title>
 
@@ -32,13 +31,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Zašportuj.sk</a>
+            <a class="navbar-brand" href="<?php echo base_url()."index.php/home/index"; ?>">Zašportuj.sk</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-left">
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
                 <li><a href="#">Tabuľky</a></li>
-                <li><a href="#">Kontakt</a></li>
-                <li><a href="#">O nás</a></li>
+                <li><a href="<?php echo base_url()."index.php/home/kontakt"; ?>">Kontakt</a></li>
+                <li><a href="<?php echo base_url()."index.php/home/o_nas"; ?>">O nás</a></li>
             </ul>
         </div>
     </div>
