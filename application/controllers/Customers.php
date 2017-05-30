@@ -28,12 +28,15 @@ class Customers extends CI_Controller
 
         $data['zakaznici'] = $this->Customers_model->get_customers($id);
 
+        $data['title'] = 'Editovanie profilu používateľa ';
+        $data['subtitle'] = $data['zakaznici']['meno'] . $data['zakaznici']['priezvisko'];
+
         $this->form_validation->set_rules('meno', 'Meno', 'required');
         $this->form_validation->set_rules('priezvisko', 'Priezvisko', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required');
         $this->form_validation->set_rules('nazov_firmy', 'Názov firmy');
 
-        if($this->form_validation->run() == FALSE)
+        if($this->form_validation->run() === FALSE)
         {
             $this->load->view('template/header', $data);
             $this->load->view('customers/edit', $data);
@@ -48,6 +51,10 @@ class Customers extends CI_Controller
     public function delete()
     {
         $id = $this->uri->segment(3);
+
+        if (empty($id)) {
+            show_404();
+        }
 
         $this->Customers_model->delete_customers($id);
         redirect(base_url() . 'index.php/customers');

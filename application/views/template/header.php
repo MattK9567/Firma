@@ -35,7 +35,7 @@
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
             <ul class="nav navbar-nav">
-                <li><a href="#">Tabuľky</a></li>
+                <li><a href="<?php echo base_url()."index.php/Customers/index/"; ?>">Tabuľky</a></li>
                 <li><a href="<?php echo base_url()."index.php/home/kontakt"; ?>">Kontakt</a></li>
                 <li><a href="<?php echo base_url()."index.php/home/o_nas"; ?>">O nás</a></li>
             </ul>

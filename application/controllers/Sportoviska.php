@@ -26,12 +26,14 @@ class Sportoviska extends CI_Controller
         $this->load->helper('form');
         $this->load->library('form_validation');
 
-        $data['zakaznici'] = $this->Sportoviska_model->get_sportoviska($id);
+        $data['sportoviska'] = $this->Sportoviska_model->get_sportoviska($id);
+        $data['title'] = 'Editovanie športoviska';
+        $data['subtitle'] = $data['sportoviska']['nazov'];
 
         $this->form_validation->set_rules('nazov', 'Nazov', 'required');
         $this->form_validation->set_rules('typ_sportoviska_ID', 'ID_typu_sportoviska', 'required');
 
-        if($this->form_validation->run() == FALSE)
+        if($this->form_validation->run() === FALSE)
         {
             $this->load->view('template/header', $data);
             $this->load->view('sportoviska/edit', $data);

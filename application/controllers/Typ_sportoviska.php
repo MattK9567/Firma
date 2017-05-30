@@ -26,7 +26,9 @@ class Typ_sportoviska extends CI_Controller
         $this->load->helper('form');
         $this->load->library('form_validation');
 
-        $data['zakaznici'] = $this->Typ_sportoviska_model->get_typ_sportoviska($id);
+        $data['typ_sportoviska'] = $this->Typ_sportoviska_model->get_typ_sportoviska($id);
+        $data['title'] = 'Editácia typu športoviska';
+        $data['subtitle'] = $data['typ_sportoviska']['nazov'];
 
         $this->form_validation->set_rules('nazov', 'Nazov', 'required');
 

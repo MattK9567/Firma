@@ -27,6 +27,7 @@ class Rezervacia extends CI_Controller
         $this->load->library('form_validation');
 
         $data['rezervacie'] = $this->Rezervacia_model->get_rezervacie($id);
+        $data['title'] = 'Editovanie rezervácie';
 
         $this->form_validation->set_rules('sportoviska_ID', 'Sportovisko', 'required'); //spravit cez select
         $this->form_validation->set_rules('status_rezervacie_ID', 'Status rezervacie', 'required'); //spravit cez select
@@ -35,7 +36,7 @@ class Rezervacia extends CI_Controller
         $this->form_validation->set_rules('cena', 'Cena', 'required');
         $this->form_validation->set_rules('cas', 'Cas', 'required');
 
-        if($this->form_validation->run() == FALSE)
+        if($this->form_validation->run() === FALSE)
         {
             $this->load->view('template/header', $data);
             $this->load->view('rezervacia/edit', $data);
