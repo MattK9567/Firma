@@ -38,6 +38,11 @@ class Typ_sportoviska_model extends CI_Model
         }
     }
 
+    public function insert_typ_sportoviska($data)
+    {
+        $this->db->insert('typ_sportoviska', $data);
+    }
+
     public function delete_typ_sportoviska($id)
     {
         $this->db->where('ID', $id);

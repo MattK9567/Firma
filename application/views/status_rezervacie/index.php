@@ -3,8 +3,7 @@
     <h1>Status rezervácie</h1>
     <div class = "row">
         <div class = "col-md-12">
-            <!--Treba zmeniť dashboard na niečo iné-->
-            <a href = "<?php echo base_url(); ?>Dashboard/addCustomer" class = "btn btn-primary pull-left">Pridať status rezervácie</a>
+            <a href = "<?php echo base_url()."index.php/Status_rezervacie/create"; ?>" class = "btn btn-primary pull-left">Pridať status rezervácie</a>
         </div>
     </div>
 

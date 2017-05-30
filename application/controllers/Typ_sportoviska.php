@@ -44,6 +44,33 @@ class Typ_sportoviska extends CI_Controller
         }
     }
 
+    public function create()
+    {
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+        $this->form_validation->set_rules('dnazov', 'Názov', 'required');
+
+        if ($this->form_validation->run() == FALSE)
+        {
+            $this->load->view('template/header');
+            $this->load->view('typ_sportoviska/create');
+            $this->load->view('template/footer');
+        }
+        else {
+            $data = array(
+                'nazov' => $this->input->post('dnazov'),
+            );
+
+            $this->Typ_sportoviska_model->insert_typ_sportoviska($data);
+            $data['message'] = 'Dáta úspešne vložené';
+
+            $this->load->view('template/header', $data);
+            $this->load->view('typ_sportoviska/create', $data);
+            $this->load->view('template/footer');
+        }
+    }
+
     public function delete()
     {
         $id = $this->uri->segment(3);

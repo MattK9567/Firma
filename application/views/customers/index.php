@@ -3,8 +3,7 @@
     <h1>Zákazníci</h1>
     <div class = "row">
         <div class = "col-md-12">
-            <!--Treba zmeniť dashboard na niečo iné-->
-            <a href = "<?php echo base_url(); ?>Dashboard/addCustomer" class = "btn btn-primary pull-left">Pridať zákazníka</a>
+            <a href = "<?php echo base_url()."index.php/Customers/create"; ?>" class = "btn btn-primary pull-left">Pridať zákazníka</a>
         </div>
     </div>
 

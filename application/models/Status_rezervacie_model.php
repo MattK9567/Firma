@@ -38,6 +38,11 @@ class Status_rezervacie_model extends CI_Model
         }
     }
 
+    public function insert_status_rezervacie($data)
+    {
+        $this->db->insert('status_rezervacie', $data);
+    }
+
     public function delete_status_rezervacie($id)
     {
         $this->db->where('ID', $id);

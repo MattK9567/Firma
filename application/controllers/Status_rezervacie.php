@@ -19,6 +19,33 @@ class Status_rezervacie extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function create()
+    {
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+        $this->form_validation->set_rules('dstatus', 'Status (boolean)', 'required');
+
+        if ($this->form_validation->run() == FALSE)
+        {
+            $this->load->view('template/header');
+            $this->load->view('status_rezervacie/create');
+            $this->load->view('template/footer');
+        }
+        else {
+            $data = array(
+                'status' => $this->input->post('dstatus'),
+            );
+
+            $this->Status_rezervacie_model->insert_status_rezervacie($data);
+            $data['message'] = 'Dáta úspešne vložené';
+
+            $this->load->view('template/header', $data);
+            $this->load->view('status_rezervacie/create', $data);
+            $this->load->view('template/footer');
+        }
+    }
+
     public function delete()
     {
         $id = $this->uri->segment(3);

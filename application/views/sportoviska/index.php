@@ -3,8 +3,7 @@
     <h1>Športoviská</h1>
     <div class = "row">
         <div class = "col-md-12">
-            <!--Treba zmeniť dashboard na niečo iné-->
-            <a href = "<?php echo base_url(); ?>Dashboard/addCustomer" class = "btn btn-primary pull-left">Pridať športovisko</a>
+            <a href = "<?php echo base_url()."index.php/Sportoviska/create"; ?>" class = "btn btn-primary pull-left">Pridať športovisko</a>
         </div>
     </div>
 

@@ -38,6 +38,11 @@ class Customers_model extends CI_Model
         }
     }
 
+    public function insert_customers($data)
+    {
+        $this->db->insert('zakaznici', $data);
+    }
+
     public function delete_customers($id)
     {
         $this->db->where('ID', $id);

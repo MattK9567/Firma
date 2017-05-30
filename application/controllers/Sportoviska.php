@@ -19,6 +19,35 @@ class Sportoviska extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function create()
+    {
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+        $this->form_validation->set_rules('dnazov', 'Názov', 'required');
+        $this->form_validation->set_rules('dtyp_sportoviska_ID', 'Typ športoviska', 'required');
+
+        if ($this->form_validation->run() == FALSE)
+        {
+            $this->load->view('template/header');
+            $this->load->view('sportoviska/create');
+            $this->load->view('template/footer');
+        }
+        else {
+            $data = array(
+                'nazov' => $this->input->post('dnazov'),
+                'typ_sportoviska_ID' => $this->input->post('dtyp_sportoviska_ID')
+            );
+
+            $this->Sportoviska_model->insert_sportovisko($data);
+            $data['message'] = 'Dáta úspešne vložené';
+
+            $this->load->view('template/header', $data);
+            $this->load->view('sportoviska/create', $data);
+            $this->load->view('template/footer');
+        }
+    }
+
     public function edit()
     {
         $id = $this->uri->segment(3);

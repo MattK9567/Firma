@@ -19,6 +19,39 @@ class Customers extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function create()
+    {
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+        $this->form_validation->set_rules('dmeno', 'Meno', 'required');
+        $this->form_validation->set_rules('dpriezvisko', 'Priezvisko', 'required');
+        $this->form_validation->set_rules('demail', 'Email', 'required');
+        $this->form_validation->set_rules('dnazov_firmy', 'Názov firmy');
+
+        if ($this->form_validation->run() == FALSE)
+        {
+            $this->load->view('template/header');
+            $this->load->view('customers/create');
+            $this->load->view('template/footer');
+        }
+        else {
+            $data = array(
+                'meno' => $this->input->post('dmeno'),
+                'priezvisko' => $this->input->post('dpriezvisko'),
+                'email' => $this->input->post('demail'),
+                'nazov_firmy' => $this->input->post('dnazov_firmy')
+            );
+
+            $this->Customers_model->insert_customers($data);
+            $data['message'] = 'Dáta úspešne vložené';
+
+            $this->load->view('template/header', $data);
+            $this->load->view('customers/create', $data);
+            $this->load->view('template/footer');
+        }
+    }
+
     public function edit()
     {
         $id = $this->uri->segment(3);
@@ -36,7 +69,7 @@ class Customers extends CI_Controller
         $this->form_validation->set_rules('email', 'Email', 'required');
         $this->form_validation->set_rules('nazov_firmy', 'Názov firmy');
 
-        if($this->form_validation->run() === FALSE)
+        if($this->form_validation->run() == FALSE)
         {
             $this->load->view('template/header', $data);
             $this->load->view('customers/edit', $data);
