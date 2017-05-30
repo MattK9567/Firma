@@ -19,6 +19,22 @@ class Rezervacia extends CI_Controller
         $this->load->view('template/footer');
     }
 
+    public function view($id = NULL)
+    {
+        $data['rezervacie'] = $this->Rezervacia_model->get_rezervacie($id);
+
+        if(empty($data['rezervacie']))
+        {
+            show_404();
+        }
+
+        $data['title'] = $data['rezervacie']['ID'];
+
+        $this->load->view('template/header', $data);
+        $this->load->view('rezervacia/view', $data);
+        $this->load->view('template/footer');
+    }
+
     public function edit()
     {
         $id = $this->uri->segment(3);

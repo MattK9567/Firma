@@ -1,10 +1,9 @@
-<?php if(!defined('BASEPATH')) exit('No direct script access allowed') ?>
+<?php if(!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <div class="container">
     <div class="row">
         <h2>das</h2>
         <div class="page-header">
-            <h1><?php echo $title; ?>
-            </h1>
+            <h1><?php echo $title; ?></h1>
         </div>
     </div>
     <div class="row">

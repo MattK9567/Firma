@@ -1,4 +1,4 @@
-<?php if(!defined('BASEPATH')) exit('No direct script access allowed') ?>
+<?php if(!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <div class="container">
     <div class="row">
         <h2>das</h2>
