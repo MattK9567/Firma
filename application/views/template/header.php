@@ -35,7 +35,11 @@
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
             <ul class="nav navbar-nav">
-                <li><a href="<?php echo base_url()."index.php/Customers/index/"; ?>">Tabuľky</a></li>
+                <li><a href="<?php echo base_url()."index.php/Customers/index/"; ?>">Zákazníci</a></li>
+                <li><a href="<?php echo base_url()."index.php/Rezervacia/index/"; ?>">Rezervácie</a></li>
+                <li><a href="<?php echo base_url()."index.php/Sportoviska/index/"; ?>">Športoviská</a></li>
+                <li><a href="<?php echo base_url()."index.php/Status_rezervacie/index/"; ?>">Status rezervácie</a></li>
+                <li><a href="<?php echo base_url()."index.php/Typ_sportoviska/index/"; ?>">Typy športovísk</a></li>
                 <li><a href="<?php echo base_url()."index.php/home/kontakt"; ?>">Kontakt</a></li>
                 <li><a href="<?php echo base_url()."index.php/home/o_nas"; ?>">O nás</a></li>
             </ul>
