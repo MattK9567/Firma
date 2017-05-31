@@ -52,33 +52,30 @@ class Customers extends CI_Controller
         }
     }
 
-    public function edit()
+    public function show_customer_id()
     {
         $id = $this->uri->segment(3);
+        $data['zakaznici'] = $this->Customers_model->get_customers();
+        $data['jeden_zakaznik'] = $this->Customers_model->show_customers_id($id);
 
-        $this->load->helper('form');
-        $this->load->library('form_validation');
+        $this->load->view('template/header', $data);
+        $this->load->view('customers/edit', $data);
+        $this->load->view('template/footer');
+    }
 
-        $data['zakaznici'] = $this->Customers_model->get_customers($id);
+    public function update_customer_id1()
+    {
+        $id= $this->input->post('did');
+        $data = array(
+            'meno' => $this->input->post('dmeno'),
+            'priezvisko' => $this->input->post('dpriezvisko'),
+            'email' => $this->input->post('demail'),
+            'nazov_firmy' => $this->input->post('dnazov_firmy')
+        );
+        $this->Customers_model->update_customers_id1($id, $data);
+        $this->show_customer_id();
 
-        $data['title'] = 'Editovanie profilu používateľa ';
-        $data['subtitle'] = $data['zakaznici']['meno'] . $data['zakaznici']['priezvisko'];
-
-        $this->form_validation->set_rules('meno', 'Meno', 'required');
-        $this->form_validation->set_rules('priezvisko', 'Priezvisko', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required');
-        $this->form_validation->set_rules('nazov_firmy', 'Názov firmy');
-
-        if($this->form_validation->run() == FALSE)
-        {
-            $this->load->view('template/header', $data);
-            $this->load->view('customers/edit', $data);
-            $this->load->view('template/footer');
-        }
-        else {
-            $this->Customers_model->set_customers($id);
-            redirect(base_url().'index.php/customers');
-        }
+        redirect(base_url().'index.php/Customers');
     }
 
     public function delete()

@@ -72,33 +72,32 @@ class Rezervacia extends CI_Controller
         }
     }
 
-    public function edit()
+    public function show_rezervacia_id()
     {
         $id = $this->uri->segment(3);
+        $data['rezervacia'] = $this->Rezervacia_model->get_rezervacie();
+        $data['jedna_rezervacia'] = $this->Rezervacia_model->show_rezervacie_id($id);
 
-        $this->load->helper('form');
-        $this->load->library('form_validation');
+        $this->load->view('template/header', $data);
+        $this->load->view('rezervacia/edit', $data);
+        $this->load->view('template/footer');
+    }
 
-        $data['rezervacie'] = $this->Rezervacia_model->get_rezervacie($id);
-        $data['title'] = 'Editovanie rezervácie';
+    public function update_rezervacia_id1()
+    {
+        $id= $this->input->post('did');
+        $data = array(
+            'sportoviska_ID' => $this->input->post('dsportoviska_ID'),
+            'status_rezervacie_ID' => $this->input->post('dstatus_rezervacie_ID'),
+            'zakaznici_ID' => $this->input->post('dzakaznici_ID'),
+            'datum' => $this->input->post('ddatum'),
+            'cena' => $this->input->post('dcena'),
+            'cas' => $this->input->post('dcas')
+        );
+        $this->Rezervacia_model->update_rezervacie_id1($id, $data);
+        $this->show_rezervacia_id();
 
-        $this->form_validation->set_rules('sportoviska_ID', 'Sportovisko', 'required'); //spravit cez select
-        $this->form_validation->set_rules('status_rezervacie_ID', 'Status rezervacie', 'required'); //spravit cez select
-        $this->form_validation->set_rules('zakaznici_ID', 'Zakaznik', 'required'); //spravit cez select
-        $this->form_validation->set_rules('datum', 'Datum', 'required');
-        $this->form_validation->set_rules('cena', 'Cena', 'required');
-        $this->form_validation->set_rules('cas', 'Cas', 'required');
-
-        if($this->form_validation->run() === FALSE)
-        {
-            $this->load->view('template/header', $data);
-            $this->load->view('rezervacia/edit', $data);
-            $this->load->view('template/footer');
-        }
-        else {
-            $this->Rezervacia_model->set_rezervacie($id);
-            redirect(base_url().'index.php/rezervacia');
-        }
+        redirect(base_url().'index.php/Rezervacia');
     }
 
     public function delete()

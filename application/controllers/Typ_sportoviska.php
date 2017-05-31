@@ -71,6 +71,29 @@ class Typ_sportoviska extends CI_Controller
         }
     }
 
+    public function show_typ_sportoviska_id()
+    {
+        $id = $this->uri->segment(3);
+        $data['typ_sportoviska'] = $this->Typ_sportoviska_model->get_typ_sportoviska();
+        $data['jeden_typ_sportoviska'] = $this->Typ_sportoviska_model->show_typ_sportoviska_id($id);
+
+        $this->load->view('template/header', $data);
+        $this->load->view('typ_sportoviska/edit', $data);
+        $this->load->view('template/footer');
+    }
+
+    public function update_typ_sportoviska_id1()
+    {
+        $id= $this->input->post('did');
+        $data = array(
+            'nazov' => $this->input->post('dnazov')
+        );
+        $this->Typ_sportoviska_model->update_typ_sportoviska_id1($id, $data);
+        $this->show_typ_sportoviska_id();
+
+        redirect(base_url().'index.php/Typ_sportoviska');
+    }
+
     public function delete()
     {
         $id = $this->uri->segment(3);

@@ -24,7 +24,7 @@
                     <td><?php echo $rezervacie_item['cas']; ?></td>
                     <td>
                         <a class="btn btn-info btn-xs" href="<?php echo base_url()."index.php/Rezervacia/view/".$rezervacie_item['ID']; ?>">View</a>
-                        <a class="btn btn-success btn-xs" href="<?php echo base_url()."index.php/Rezervacia/edit/".$rezervacie_item['ID']; ?>">Edit</a>
+                        <a class="btn btn-success btn-xs" href="<?php echo base_url()."index.php/Rezervacia/show_rezervacia_id/".$rezervacie_item['ID']; ?>">Edit</a>
                         <a class="btn btn-warning btn-xs" href="<?php echo base_url()."index.php/Rezervacia/delete/".$rezervacie_item['ID']; ?>" onclick="confirm('Naozaj zmazať rezerváciu??')">Delete</a>
                     </td>
                 </tr>

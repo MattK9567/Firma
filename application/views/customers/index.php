@@ -25,7 +25,7 @@
                     <td><?php echo $customers_item['email']; ?></td>
                     <td><?php echo $customers_item['nazov_firmy']; ?></td>
                     <td>
-                    <td><a class="btn btn-primary btn-xs" href="<?php echo base_url()."index.php/Customers/edit/".$customers_item['ID']; ?>">Edit</a></td>
+                    <td><a class="btn btn-primary btn-xs" href="<?php echo base_url()."index.php/Customers/show_customer_id/".$customers_item['ID']; ?>">Edit</a></td>
                     <td><a class="btn btn-warning btn-xs" href="<?php echo base_url()."index.php/Customers/delete/".$customers_item['ID']; ?>" onclick="confirm('Naozaj zmazať používateľa??')">Delete</a></td>
                     </td>
                 </tr>

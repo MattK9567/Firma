@@ -38,6 +38,22 @@ class Rezervacia_model extends CI_Model
         }
     }
 
+    public function show_rezervacie_id($data)
+    {
+        $this->db->select('*');
+        $this->db->from('rezervacia');
+        $this->db->where('ID', $data);
+        $query = $this->db->get();
+        $result = $query->result();
+        return $result;
+    }
+
+    public function update_rezervacie_id1($id,$data)
+    {
+        $this->db->where('ID', $id);
+        $this->db->update('rezervacia', $data);
+    }
+
     public function insert_rezervacie($data)
     {
         $this->db->insert('rezervacia', $data);

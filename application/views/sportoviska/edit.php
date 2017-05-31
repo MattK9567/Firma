@@ -1,39 +1,34 @@
-<?php if(!defined('BASEPATH')) exit('No direct script access allowed') ?>
-<div class="container">
+<html>
+<head>
+    <title>Editácia dát</title>
+</head>
+<body>
+<div id="container">
     <div class="row">
         <h2>das</h2>
-        <div class="page-header">
-            <h1><?php echo $title; ?>
-                <small><?php echo $subtitle; ?></small>
-            </h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <?php if(validation_errors()): ?>
-                <div class="alert alert-danger" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span>x</button>
-                    <strong>Varovanie!</strong> <?php echo  validation_errors(); ?>
-                </div>
-                <?php
-            endif;
-            echo form_open('sportoviska/edit/'.$sportoviska['ID'],array('class'=>'form-horizontal')); ?>
-            <div class="form-group">
-                <?php foreach ($sportoviska as $key => $value): ?>
-                    <div class="form-group">
-                        <label for="<?php echo $key; ?>" class="col-sm-2 control-label"><?php echo $key;?></label>
-                        <div class="col-sm-10">
-                            <input type="input" class="form-control" id="<?php echo $key; ?>" value="<?php echo $value; ?>"
-                                   placeholder="<?php echo $value; ?>">
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-                <div class="col-sm-offset-2 col-sm-10">
-                    <a class="btn btn-default" href="<?php echo base_url()."index.php/Sportoviska"; ?>">Späť</a>
-                    <input type="submit" class="btn btn-primary" name="submit" value="Editovať">
-                </div>
+        <div class="col-sm-offset-1">
+            <div class="page-header">
+                <h1>Editácia športoviska: </h1>
             </div>
-            <?php echo form_close(); ?>
+        </div>
+        <div class="row">
+            <div id="detail" class="col-sm-offset-1">
+                <?php foreach ($jedno_sportovisko as $sportovisko_item): ?>
+                    <form method="post" action="<?php echo base_url() . "index.php/Sportoviska/update_sportovisko_id1"?>">
+                        <label id="hide">Id :</label><br />
+                        <input type="text" id="hide" name="did" value="<?php echo $sportovisko_item->ID; ?>"><br />
+                        <label>Názov :</label><br />
+                        <input type="text" name="dnazov" value="<?php echo $sportovisko_item->nazov; ?>"><br />
+                        <label>ID typu športoviska :</label><br />
+                        <input type="text" name="dtyp_sportoviska_ID" value="<?php echo $sportovisko_item->typ_sportoviska_ID; ?>"><br /><br />
+
+                        <br /><a class="btn btn-default" href="<?php echo base_url()."index.php/Sportoviska"; ?>">Späť</a>
+                        <input type="submit" id="submit" class="btn btn-primary" name="dsubmit" value="Editovať">
+                    </form>
+                <?php endforeach; ?>
+            </div>
         </div>
     </div>
 </div>
+</body>
+</html>

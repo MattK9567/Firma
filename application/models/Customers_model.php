@@ -38,6 +38,22 @@ class Customers_model extends CI_Model
         }
     }
 
+    public function show_customers_id($data)
+    {
+        $this->db->select('*');
+        $this->db->from('zakaznici');
+        $this->db->where('ID', $data);
+        $query = $this->db->get();
+        $result = $query->result();
+        return $result;
+    }
+
+    public function update_customers_id1($id,$data)
+    {
+        $this->db->where('ID', $id);
+        $this->db->update('zakaznici', $data);
+    }
+
     public function insert_customers($data)
     {
         $this->db->insert('zakaznici', $data);

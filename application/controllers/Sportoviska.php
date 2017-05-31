@@ -48,30 +48,28 @@ class Sportoviska extends CI_Controller
         }
     }
 
-    public function edit()
+    public function show_sportovisko_id()
     {
         $id = $this->uri->segment(3);
+        $data['sportoviska'] = $this->Sportoviska_model->get_sportoviska();
+        $data['jedno_sportovisko'] = $this->Sportoviska_model->show_sportovisko_id($id);
 
-        $this->load->helper('form');
-        $this->load->library('form_validation');
+        $this->load->view('template/header', $data);
+        $this->load->view('sportoviska/edit', $data);
+        $this->load->view('template/footer');
+    }
 
-        $data['sportoviska'] = $this->Sportoviska_model->get_sportoviska($id);
-        $data['title'] = 'Editovanie športoviska';
-        $data['subtitle'] = $data['sportoviska']['nazov'];
+    public function update_sportovisko_id1()
+    {
+        $id= $this->input->post('did');
+        $data = array(
+            'nazov' => $this->input->post('dnazov'),
+            'typ_sportoviska_ID' => $this->input->post('dtyp_sportoviska_ID')
+        );
+        $this->Sportoviska_model->update_sportovisko_id1($id, $data);
+        $this->show_sportovisko_id();
 
-        $this->form_validation->set_rules('nazov', 'Nazov', 'required');
-        $this->form_validation->set_rules('typ_sportoviska_ID', 'ID_typu_sportoviska', 'required');
-
-        if($this->form_validation->run() === FALSE)
-        {
-            $this->load->view('template/header', $data);
-            $this->load->view('sportoviska/edit', $data);
-            $this->load->view('template/footer');
-        }
-        else {
-            $this->Sportoviska_model->set_sportoviska($id);
-            redirect(base_url().'index.php/Sportoviska');
-        }
+        redirect(base_url().'index.php/Sportoviska');
     }
 
     public function delete()
